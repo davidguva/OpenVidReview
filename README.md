@@ -4,7 +4,7 @@ This project is a a collaborative video review and annotation tool. It allows us
 
 The project is a work in progress and any use is at your own risk!
 
-If you want to help in any capacity or contact me send me an email at david [a] davidguva.se
+If you want to help in any capacity or contact me send me an email at david [a] davidguva.se and if you for some reason wants to say thanks you can [buy me a coffee](https://buymeacoffee.com/davidguva).
 
 ## Features
 
