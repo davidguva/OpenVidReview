@@ -20,6 +20,7 @@ If you want to help in any capacity or contact me send me an email at david [a] 
 
 - Implement the use of encrypted passwords (especially for the admin interface)
 - Real-time updates with Socket.io
+- Overall to make it as secure as possible and ready for production.
 
 I would love for people to test this and give feedback.
 
