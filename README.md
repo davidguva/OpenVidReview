@@ -60,4 +60,4 @@ I would love for people to test this and give feedback.
     npm start
     ```
 
-5. Open your browser and go to `http://localhost:3000`.
+5. Open your browser and go to `http://localhost:3000` or visit `http://localhost:3000/admin` for the admin interface.
