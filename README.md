@@ -52,7 +52,7 @@ I would love for people to test this and give feedback.
 
     ```bash
     npm install
-    ``
+    ```
 
 4. Start the server:
 
