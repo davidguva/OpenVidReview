@@ -21,6 +21,8 @@ const SECRET = process.env.SECRET || "secret";
 const PORT = process.env.PORT || 3000;
 const TITLE = process.env.TITLE || "Title";
 
+console.log(PASSWORD);
+
 // Middleware to pass socket.io to routes
 app.use((req, res, next) => {
     req.io = io;
