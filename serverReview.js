@@ -16,10 +16,10 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 // Environment variables
-const PASSWORD = process.env.PASSWORD;
-const SECRET = process.env.SECRET;
+const PASSWORD = process.env.PASSWORD || "password";
+const SECRET = process.env.SECRET || "secret";
 const PORT = process.env.PORT || 3000;
-const TITLE = process.env.TITLE;
+const TITLE = process.env.TITLE || "Title";
 
 // Middleware to pass socket.io to routes
 app.use((req, res, next) => {
