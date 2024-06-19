@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin - <%= title %></h1>
+        <div id="addbox">
+            <form id="uploadForm">
+                <input type="text" id="name" name="name" placeholder="Review name:" required />
+                <input type="text" id="password" name="password" placeholder="Password:" required />
+                <input type="file" id="file" name="file" required />
+                <button type="submit" class="browseButton">Upload</button>
+            </form>
+            <progress id="progressBar" value="0" max="100" style="display:none;"></progress>
+            <div id="uploadProgress"></div>
+            <div id="transcodeProgress"></div>
+            <div id="uploadStatus"></div>
+        </div>
+        <div id="reviews-list"></div>
+        <div id="logout">
+            <button id="logoutBtn">Logout</button>
+            <button id="gobackBtn">Main</button>
+        </div>
+    </div>
+
+    <script src="/js/admin.js"></script>
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+    <script>
+        // Handle logout button click
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            fetch('/logout', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Logout successful') {
+                    window.location.reload();
+                }
+            });
+        });
+
+        // Handle go back button click
+        document.getElementById('gobackBtn').addEventListener('click', function() {
+            window.location.href = '/';
+        });
+    </script>
+</body>
+</html>

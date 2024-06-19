@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <div id="login">
+        Password:
+        </div>
+            <form id="login-form">
+               
+                <input type="password" id="password" name="password">
+                <button type="submit">Login</button>
+            </form>
+            <div id="login-message"></div>
+
+    </div>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Login successful') {
+                    window.location.reload();
+                } else {
+                    document.getElementById('login-message').textContent = 'Invalid password. Please try again.';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button-container .edit-comment {
+    background-color: #2f89ff;
+}
+
+.button-container .edit-comment:hover {
+    background-color: #205eaf;
+}
+.button-container .delete-comment {
+    background-color: #dc3545;
+}
+
+.button-container .delete-comment:hover {
+    background-color: #c82333;
+}
+
+.headertext {
+    align-items: center;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#title {
+    padding: 4px;
+    margin-bottom: 10px;
+}
+
+#video-player,
+#comment-form {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+#comment-form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#comment-form input[type="text"] {
+    flex: 2;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#comment-form select {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#comment-form button {
+    flex: 0 0 auto;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+#comment-form input[type="text"]:focus,
+#comment-form select:focus,
+#comment-form button:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+
+
+#commentsContainer {
+    width: 100%;
+    max-height: 300px; /* Set a fixed height for the scrollable area */
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-bottom: 20px;
+    border: 1px solid #ddd; /* Optional: Add a border for better visibility */
+    padding: 10px; /* Optional: Add padding for better spacing */
+}
+
+.comment {
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.text-container {
+    flex: 8;
+}
+
+.isDoneText, .colorText {
+    margin-right: 5px;
+    font-size: 12px;
+}
+
+.isDoneBox {
+    flex: 1;
+}
+
+.color-flag {
+    margin-right: 10px;
+    width: 10px;
+    height: 10px;
+}
+
+.button-container {
+    flex: 1;
+    display: flex;
+    gap: 10px;
+}
+
+.button-container button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-container button:hover {
+    background-color: #0056b3;
+}
+
+#export-edl {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+#export-edl:hover {
+    background-color: #0056b3;
+}
+
+/* Video player dimensions */
+.videoplayer-dimensions {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.vjs-no-js {
+    display: none;
+}
+
+input[type="checkbox"] {
+    width: 1em;
+    height: 1rem;
+    accent-color: rgb(53, 121, 247);
+  }
+  

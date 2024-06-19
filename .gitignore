@@ -1,0 +1,4 @@
+node_modules/
+.env
+comments.db
+public/videos/

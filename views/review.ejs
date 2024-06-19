@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/review.css">
+    <link rel="stylesheet" href="/css/plyr.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="title"></div>
+        <div id="video-player">
+            <video id="player" playsinline controls data-poster="/path/to/poster.jpg">
+                <source src="" type="video/mp4" />
+            </video>
+        </div>
+        <form id="comment-form">
+            <input type="text" id="comment-text" placeholder="Add a comment" required autocomplete="off" />
+            <select id="tag-color"></select>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="commentsContainer">
+            <div id="comments"></div>
+        </div>
+        <div class="bottom">
+            <button id="export-edl">Export Comments as EDL</button>
+            <button id="helpBtn">Help</button>
+            <button id="downloadBtn">Download File</button>
+            <button id="backButton" onclick="window.location.href = '/';">Start page</button>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="helpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Welcome to the video review tool! Here are some useful keyboard shortcuts and functionalities:</p>
+            <ul>
+                <li><strong>Space:</strong> Play/Pause the video</li>
+                <li><strong>J:</strong> Rewind 2 seconds</li>
+                <li><strong>K:</strong> Play/Pause the video</li>
+                <li><strong>L:</strong> Forward 2 seconds</li>
+            </ul>
+            <p>You can also use the following buttons:</p>
+            <ul>
+                <li><strong>Export Comments as EDL:</strong> Export all comments in EDL format</li>
+                <li><strong>Help:</strong> Show this help dialog</li>
+                <li><strong>Download File:</strong> Download the current video file</li>
+            </ul>
+            <p>To add a comment, simply type your comment in the input box, select a tag color, and click "Submit". You can edit or delete comments using the respective buttons next to each comment.</p>
+        </div>
+    </div>
+
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/review.js"></script>
+</body>
+</html>
