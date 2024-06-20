@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
         cb(null, uploadPath);
     },
     filename: async (req, file, cb) => {
-        const uploadPath = getDirFromConfig(getDirFromConfig('./public/videos'));
+        const uploadPath = getDirFromConfig('./public/videos');
         let filename = file.originalname;
         let filePath = path.join(uploadPath, filename);
 
