@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  openvidreview:
+    container_name: openvidreview
+    build: .
+    image: davidguva/openvidreview:latest
+    ports:
+      - 3000:3000
