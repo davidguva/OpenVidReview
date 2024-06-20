@@ -4,6 +4,7 @@ const router = express.Router();
 const db = require('../db/sqlite');
 const fs = require('fs');
 const path = require('path');
+const {getDirFromConfig} = require("../util/paths");
 
 // Middleware to check if user is authenticated
 function isAuthenticated(req, res, next) {
@@ -143,7 +144,7 @@ function getFilePathById(id, callback) {
             return callback(new Error('Video not found.'));
         }
         
-        const filePath = path.join(__dirname, '../public/videos/', row.videoUrl);
+        const filePath = path.join(__dirname, getDirFromConfig('./public/videos'), row.videoUrl);
         callback(null, filePath);
     });
 }
