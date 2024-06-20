@@ -7,3 +7,8 @@ services:
     image: davidguva/openvidreview:latest
     ports:
       - 3000:3000
+#    volumes:
+#      - '/path/on/host/config:/config'
+#    environment:
+#      - PUID=1000
+#      - PGID=1000

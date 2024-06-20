@@ -1,20 +1,45 @@
-# Use the official Node.js 14 image as a base
-FROM node:18.20.3
+FROM lsiobase/alpine:3.18 as base
 
-# Set the working directory in the container
+ENV TZ=Etc/GMT
+
+RUN \
+  echo "**** install build packages ****" && \
+  apk add --no-cache \
+    ffmpeg \
+    nodejs \
+    npm \
+    && \
+  echo "**** cleanup ****" && \
+  rm -rf \
+    /root/.cache \
+    /tmp/*
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+ARG data_dir=/config
+VOLUME $data_dir
+ENV CONFIG_DIR=$data_dir
+
+COPY docker/root/ /
+
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+FROM base as app
 
-# Copy the rest of the application code
-COPY . .
+COPY --from=base /usr/local/bin /usr/local/bin
+COPY --from=base /usr/local/lib /usr/local/lib
 
-# Install dependencies
-RUN npm install 
+ENV NODE_ENV=production
+ENV IS_DOCKER=true
+ENV COLORED_STD=true
 
-# Expose the port your app runs on
-EXPOSE 3000
+COPY --chown=abc:abc package*.json ./
 
-# Command to run the application
-CMD ["npm", "start"]
+RUN npm ci \
+    && chown -R abc:abc node_modules
+
+COPY --chown=abc:abc . /app
+
+ARG webPort=3000
+ENV PORT=$webPort
+EXPOSE $PORT

@@ -74,3 +74,29 @@ I would love for people to test this and give feedback.
 2. Build and start the container:
 
     `docker compose up -d`
+
+#### Docker Configuration
+
+##### Storage
+
+You **should** bind a host directory into the container to persist videos and configuration. Otherwise, these will be lost when the container is updated.
+
+See commented example in [docker-compose.yml](/docker-compose.yml)
+
+###### Linux Host and File Permissions
+
+If you are
+
+* using [rootless containers with Podman](https://developers.redhat.com/blog/2020/09/25/rootless-containers-with-podman-the-basics#why_podman_)
+* running docker on MacOS or Windows
+
+this **DOES NOT** apply to you.
+
+If you are running Docker on a **Linux Host** you should specify `user:group` permissions of the user who owns the **configuration directory** on the host to avoid [docker file permission problems.](https://ikriv.com/blog/?p=4698) These can be specified using the [environmental variables **PUID** and **PGID**.](https://docs.linuxserver.io/general/understanding-puid-and-pgid)
+
+To get the UID and GID for the current user run these commands from a terminal:
+
+* `id -u` -- prints UID
+* `id -g` -- prints GID
+
+See commented example in [docker-compose.yml](/docker-compose.yml)
