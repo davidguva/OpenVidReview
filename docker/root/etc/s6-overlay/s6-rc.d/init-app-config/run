@@ -1,0 +1,34 @@
+#!/usr/bin/with-contenv bash
+
+# used https://github.com/linuxserver/docker-plex as a template
+
+echo "-------------------------------------"
+echo -e "Setting up app config directory based on CONFIG_DIR env: ${CONFIG_DIR}\n"
+
+# make config folder if it does not exist
+if [ ! -d "${CONFIG_DIR}" ]; then
+  echo "Config dir ${CONFIG_DIR} does not exist! Creating..."
+  mkdir -p "${CONFIG_DIR}"
+#  mkdir -p  "${CONFIG_DIR}/db"
+#  mkdir -p  "${CONFIG_DIR}/public/videos"
+else
+  if [ "$(ls -A ${CONFIG_DIR})" ]; then
+       echo "Directory is not empty, not creating examples."
+    fi
+fi
+
+if [ ! -d "${CONFIG_DIR}/db" ]; then
+    echo "Config dir ${CONFIG_DIR}/db does not exist! Creating..."
+      mkdir -p  "${CONFIG_DIR}/db"
+fi
+
+if [ ! -d "${CONFIG_DIR}/public" ]; then
+    echo "Config dir ${CONFIG_DIR}/public/videos does not exist! Creating..."
+      mkdir -p  "${CONFIG_DIR}/public/videos"
+fi
+
+# permissions
+echo "chown'ing directory to ensure correct permissions."
+chown -R abc:abc "${CONFIG_DIR}"
+echo "Done!"
+echo -e "-------------------------------------\n"

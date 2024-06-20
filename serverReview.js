@@ -23,6 +23,10 @@ const TITLE = process.env.TITLE || "Title";
 
 console.log(PASSWORD);
 
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+    const appError = new Error(`Uncaught exception is crashing the app! :( Type: ${origin}`, {cause: err});
+    console.error(appError)
+});
 // Middleware to pass socket.io to routes
 app.use((req, res, next) => {
     req.io = io;
@@ -112,7 +116,11 @@ io.on('connection', (socket) => {
     });
 });
 
+
 // Start the server
 server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+}).on('error', (err) => {
+    console.error(err);
 });
+

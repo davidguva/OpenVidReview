@@ -5,17 +5,18 @@ const path = require('path');
 const fs = require('fs').promises;
 const db = require('../db/sqlite');
 const ffmpeg = require('fluent-ffmpeg');
+const {getDirFromConfig} = require("../util/paths");
 
 const router = express.Router();
 
 // Custom storage engine for multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = './public/videos';
+        const uploadPath = getDirFromConfig('./public/videos')
         cb(null, uploadPath);
     },
     filename: async (req, file, cb) => {
-        const uploadPath = './public/videos';
+        const uploadPath = getDirFromConfig('./public/videos');
         let filename = file.originalname;
         let filePath = path.join(uploadPath, filename);
 
@@ -96,7 +97,7 @@ router.post('/', (req, res) => {
             return res.status(400).send({ message: 'No file uploaded.' });
         }
 
-        const filePath = path.resolve('./public/videos', file.filename);
+        const filePath = path.resolve(getDirFromConfig('./public/videos'), file.filename);
         console.log(filePath);
 
         try {

@@ -1,5 +1,8 @@
+const {getDirFromConfig} = require("../util/paths");
 const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('./comments.db');
+const dbDir = getDirFromConfig('./db/comments.db');
+console.log(`DB Dir: ${dbDir}`);
+const db = new sqlite3.Database(dbDir);
 
 db.serialize(() => {
     db.run(`CREATE TABLE IF NOT EXISTS comments (
@@ -17,7 +20,8 @@ db.serialize(() => {
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         reviewName TEXT UNIQUE,
         videoUrl TEXT,
-        password TEXT
+        password TEXT,
+        frameRate REAL
     )`);
 });
 
